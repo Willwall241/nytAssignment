@@ -1,14 +1,13 @@
 //Declare variables
-
-var searchTerm;
-var startYear;
-var endYear;
+var articleCounter = 0;
+var numResults = 0
+var searchTerm = "";
+var startYear = 0;
+var endYear = 0;
 var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 queryURL += '?' + $.param({
     'api-key': "af30c4e1ec2b48699b542b06eded25d9",
     'q': searchTerm,
-    'begin_date': startYear,
-    'end_date': endYear
 });
 
 //create ajax GET method
@@ -17,22 +16,15 @@ queryURL += '?' + $.param({
 // grab the data value of start year box for startYear var
 // "     "    "    "    "  end  year  "   "  endYear var
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    console.log(response)
 
-});
-
-$("search-btn").on("click", function() {
+$("#run-search").on("click", function() {
 
     //Empty the articles div
-
+    event.preventDefault();
     //Set variables for search terms
-    searchTerm = $("search-term-box").val();
-    startYear = $("start-year-box").val();
-    endYear = $("end-year-box").val();
+    searchTerm = $("search-term").val();
+    startYear = $("start-year").val();
+    endYear = $("end-year").val();
     
     $.ajax({
         url: queryURL,
@@ -42,14 +34,13 @@ $("search-btn").on("click", function() {
         //capture the result
         
         //for loop that goes through based on amount of articles
-        for (var i=0; i < response.docs.length; i++) {
+        for (var i=0; i < response.response.docs.length; i++) {
             //append articles to the DOM
-            
+            var newDiv = $("<div>")
+            newDiv.text(response.response.docs[i].headline.main)
 
             
-            $("#").append(searchTerm)
-            $("#").append(startYear)
-            $("#").append(endYear)a
+            $("#result-section").append(newDiv)
             
         
 
