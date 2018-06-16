@@ -1,0 +1,32 @@
+.jumbotron {
+    background-color: #20315a;
+    
+}
+
+.fa-newspaper-o:before {
+    content: "\f1ea";
+}
+
+.card-header {
+    background-color: #2c3e50;
+}
+
+.fa-list-alt:before {
+    content: "\f022";
+}
+
+.fa-table:before {
+    content: "\f0ce";
+}
+
+.fa-search:before {
+    content: "\f002";
+ }
+
+ .fa-trash:before {
+    content: "\f1f8";
+ }
+ 
+ button {
+     background-color: #95a5a6;
+ }
